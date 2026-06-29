@@ -1,1 +1,1135 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelmeni Haus — Authentic Russian Dumplings | Made With Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #C41E3A;
+            --red-dark: #8B0000;
+            --red-light: #E85D75;
+            --gold: #D4A843;
+            --gold-light: #F0D78C;
+            --cream: #FDF8F0;
+            --warm-white: #FFFBF5;
+            --charcoal: #1A1A1A;
+            --gray: #6B6B6B;
+            --light-gray: #E8E4DE;
+            --wood: #8B6914;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--warm-white);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 251, 245, 0.97);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 30px rgba(0,0,0,0.06);
+            padding: 14px 50px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--warm-white);
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            font-weight: 400;
+            font-style: italic;
+            font-size: 0.9rem;
+            display: block;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: -3px;
+            opacity: 0.8;
+        }
+
+        nav.scrolled .logo-text { color: var(--charcoal); }
+        nav.scrolled .logo-icon { background: var(--red); }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--warm-white);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav.scrolled .nav-links a { color: var(--charcoal); }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--red);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.75rem !important;
+            font-weight: 600 !important;
+            letter-spacing: 2px !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(26,26,26,0.75) 0%, rgba(139,0,0,0.4) 100%),
+                        url('https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 120px 30px 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 168, 67, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            padding: 8px 24px;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+        }
+
+        .hero-badge .star { color: var(--gold); }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 700;
+            color: var(--warm-white);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--gold-light);
+        }
+
+        .hero-tagline {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero-motto {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--red-light);
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 38px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.35s ease;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--red);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--red-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(196, 30, 58, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--warm-white);
+            border: 1.5px solid rgba(255,255,255,0.35);
+        }
+
+        .btn-outline:hover {
+            background: var(--warm-white);
+            color: var(--charcoal);
+            border-color: var(--warm-white);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: bounce 2.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-12px); }
+            60% { transform: translateX(-50%) translateY(-6px); }
+        }
+
+        section { padding: 100px 50px; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 600;
+            color: var(--charcoal);
+            line-height: 1.2;
+        }
+
+        .about { background: var(--cream); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: #4a4a4a;
+            margin-bottom: 22px;
+            font-weight: 300;
+        }
+
+        .about-text .highlight {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--red);
+            border-left: 3px solid var(--red);
+            padding-left: 20px;
+            margin: 25px 0;
+        }
+
+        .about-image { position: relative; }
+
+        .about-image img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--red);
+            border-radius: 8px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat { text-align: center; }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--red);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        .menu {
+            background: var(--charcoal);
+            color: var(--warm-white);
+        }
+
+        .menu .section-title { color: var(--warm-white); }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 35px 30px;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--red);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .menu-card:hover::before { transform: scaleY(1); }
+
+        .menu-card:hover {
+            background: rgba(255,255,255,0.07);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .menu-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--warm-white);
+        }
+
+        .menu-card .price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        .menu-card p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.55);
+            font-weight: 300;
+        }
+
+        .menu-card .tag {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--red-light);
+            border: 1px solid rgba(232, 93, 117, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .gallery { background: var(--warm-white); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .gallery-item.wide {
+            grid-column: span 2;
+            aspect-ratio: 2/1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img { transform: scale(1.08); }
+
+        .gallery-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26,26,26,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .overlay { opacity: 1; }
+
+        .gallery-item .overlay span {
+            color: var(--warm-white);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 1.5px solid var(--warm-white);
+            padding: 10px 24px;
+            border-radius: 4px;
+        }
+
+        .reviews { background: var(--cream); }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--warm-white);
+            padding: 40px 35px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            position: relative;
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--light-gray);
+            line-height: 1;
+        }
+
+        .review-stars {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        .review-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .reviewer-info h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .reviewer-info p { font-size: 0.75rem; color: var(--gray); }
+
+        .review-rating-tag {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--red);
+            background: rgba(196, 30, 58, 0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .overall-rating {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .overall-rating .big-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            font-weight: 700;
+            color: var(--red);
+            line-height: 1;
+        }
+
+        .overall-rating .big-stars {
+            color: var(--gold);
+            font-size: 1.6rem;
+            letter-spacing: 6px;
+            margin: 10px 0;
+        }
+
+        .overall-rating p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            letter-spacing: 1px;
+        }
+
+        .overall-rating .reviews-count {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-top: 5px;
+        }
+
+        .visit { background: var(--warm-white); }
+
+        .visit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .visit-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 35px;
+            color: var(--charcoal);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        .info-item .icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(196, 30, 58, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .info-item .text h4 {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .info-item .text p {
+            font-size: 0.95rem;
+            color: #4a4a4a;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 420px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .visit-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .visit-tag {
+            background: rgba(196, 30, 58, 0.08);
+            color: var(--red);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            background: var(--charcoal);
+            color: var(--warm-white);
+            padding: 70px 50px 40px;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand .logo-text {
+            color: var(--warm-white);
+            font-size: 1.8rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 15px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .footer-brand .motto {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--red-light);
+            margin-top: 15px;
+            font-size: 1rem;
+        }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+            font-weight: 300;
+        }
+
+        .footer-col a:hover { color: var(--gold); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 25px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid, .visit-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item.wide { grid-column: span 2; }
+            nav { padding: 15px 25px; }
+            section { padding: 60px 25px; }
+            .nav-links { display: none; }
+            .footer-content { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item.wide {
+                grid-column: span 1;
+                aspect-ratio: 1;
+            }
+            .hero-cta { flex-direction: column; width: 100%; padding: 0 20px; }
+            .btn { width: 100%; }
+            .stats-row { gap: 20px; }
+            .footer-content { grid-template-columns: 1fr; gap: 30px; }
+        }
+
+        html { scroll-behavior: smooth; }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar" class="scrolled">
+        <div class="logo">
+            <div class="logo-icon">🥟</div>
+            <div class="logo-text">Pelmeni Haus<span>Made With Love</span></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#visit" class="nav-cta">Order Now</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-badge">
+            <span class="star">★★★★★</span> 4.9 · 105 Reviews · LGBTQ+ Friendly
+        </div>
+        <h1>Pelmeni <em>Haus</em></h1>
+        <p class="hero-tagline">Authentic Russian &amp; Eastern European Dumplings</p>
+        <p class="hero-motto">"Made With Love"</p>
+        <div class="hero-cta">
+            <a href="#menu" class="btn btn-primary">Explore Menu</a>
+            <a href="#visit" class="btn btn-outline">Find Us</a>
+        </div>
+        <div class="scroll-indicator">Scroll</div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-text fade-in visible">
+                <div class="section-label">Our Story</div>
+                <h2 class="section-title">Homemade Dumplings,<br>Grandma's Recipes</h2>
+                <p style="margin-top: 25px;">
+                    At Pelmeni Haus, every dumpling is handcrafted with the same love and care that Russian grandmothers have passed down for generations. We believe that the best food comes from the heart — and it shows in every bite.
+                </p>
+                <p>
+                    Our kitchen brings together the rich culinary traditions of Russia, Ukraine, and Eastern Europe. From classic Siberian pelmeni stuffed with juicy pork and beef, to delicate vareniki filled with cottage cheese or cherries, to crispy chebureks — every dish tells a story of home.
+                </p>
+                <div class="highlight">
+                    "We tasted chebureks which were very large and delicious — a true taste of authentic Eastern European comfort food."
+                </div>
+                <p>
+                    Whether you are craving a warming bowl of Soljanka soup, a hearty Chicken Pot Pie, or a plate of perfectly boiled dumplings topped with sour cream and fresh dill, Pelmeni Haus delivers flavors that transport you straight to a cozy kitchen in Moscow or Kyiv.
+                </p>
+                <div class="stats-row">
+                    <div class="stat">
+                        <div class="stat-number">4.9★</div>
+                        <div class="stat-label">Rating</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">105+</div>
+                        <div class="stat-label">Reviews</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">€1–10</div>
+                        <div class="stat-label">Per Person</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image fade-in visible">
+                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&amp;q=80" alt="Pelmeni Haus Kitchen">
+            </div>
+        </div>
+    </section>
+
+    <section class="menu" id="menu">
+        <div class="section-header fade-in visible">
+            <div class="section-label">Our Menu</div>
+            <h2 class="section-title">Taste Eastern Europe</h2>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-card fade-in visible">
+                <div class="menu-card-header">
+                    <h3>Classic Pelmeni</h3>
+                    <span class="price">€6.50</span>
+                </div>
+                <p>Traditional Siberian dumplings filled with seasoned ground pork and beef, served with sour cream, melted butter, and fresh dill.</p>
+                <span class="tag">Bestseller</span>
+            </div>
+            <div class="menu-card fade-in visible">
+                <div class="menu-card-header">
+                    <h3>Vareniki</h3>
+                    <span class="price">€6.00</span>
+                </div>
+                <p>Ukrainian-style dumplings with your choice of filling: cottage cheese &amp; herbs, mashed potato &amp; onion, or sweet cherry.</p>
+                <span class="tag">Guest Favorite</span>
+            </div>
+            <div class="menu-card fade-in visible">
+                <div class="menu-card-header">
+                    <h3>Chebureks</h3>
+                    <span class="price">€5.50</span>
+                </div>
+                <p>Large, crispy deep-fried turnovers stuffed with seasoned minced meat and onions. Golden, flaky, and incredibly satisfying.</p>
+                <span class="tag">Must Try</span>
+            </div>
+            <div class="menu-card fade-in visible">
+                <div class="menu-card-header">
+                    <h3>Soljanka Soup</h3>
+                    <span class="price">€5.00</span>
+                </div>
+                <p>Hearty Russian sour soup with smoked meats, olives, capers, and lemon. A warming classic that hits the spot every time.</p>
+                <span class="tag">Signature</span>
+            </div>
+            <div class="menu-card fade-in visible">
+                <div class="menu-card-header">
+                    <h3>Chicken Pot Pie</h3>
+                    <span class="price">€7.50</span>
+                </div>
+                <p>Flaky pastry crust filled with tender chicken, vegetables, and creamy gravy. Comfort food at its finest.</p>
+                <span class="tag">Comfort Food</span>
+            </div>
+            <div class="menu-card fade-in visible">
+                <div class="menu-card-header">
+                    <h3>Blini &amp; Pancakes</h3>
+                    <span class="price">€4.50</span>
+                </div>
+                <p>Thin Russian crepes served with your choice of sweet or savory toppings — honey, jam, sour cream, or smoked salmon.</p>
+                <span class="tag">Sweet or Savory</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="section-header fade-in visible">
+            <div class="section-label">Gallery</div>
+            <h2 class="section-title">A Feast for the Eyes</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item wide fade-in visible">
+                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=1200&amp;q=80" alt="Pelmeni Haus Storefront">
+                <div class="overlay"><span>Storefront</span></div>
+            </div>
+            <div class="gallery-item fade-in visible">
+                <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=800&amp;q=80" alt="Classic Pelmeni">
+                <div class="overlay"><span>Pelmeni</span></div>
+            </div>
+            <div class="gallery-item fade-in visible">
+                <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800&amp;q=80" alt="Dumplings with Sour Cream">
+                <div class="overlay"><span>With Sour Cream</span></div>
+            </div>
+            <div class="gallery-item fade-in visible">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&amp;q=80" alt="Cozy Interior">
+                <div class="overlay"><span>Cozy Vibes</span></div>
+            </div>
+            <div class="gallery-item wide fade-in visible">
+                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1200&amp;q=80" alt="Pelmeni Haus Interior">
+                <div class="overlay"><span>Our Space</span></div>
+            </div>
+            <div class="gallery-item fade-in visible">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&amp;q=80" alt="Vareniki">
+                <div class="overlay"><span>Vareniki</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+        <div class="section-header fade-in visible">
+            <div class="section-label">Testimonials</div>
+            <h2 class="section-title">What Our Guests Say</h2>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card fade-in visible">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Fantastic… try the Vareniki. Great food, service and prices. This place is a hidden gem for anyone craving authentic Eastern European flavors."</p>
+                <div class="review-meta">
+                    <div class="reviewer-avatar">G</div>
+                    <div class="reviewer-info">
+                        <h4>Guest Review</h4>
+                        <p>3 days ago · Google Reviews</p>
+                    </div>
+                </div>
+                <span class="review-rating-tag">Food: 5 · Service: 5</span>
+            </div>
+            <div class="review-card fade-in visible">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"100/10 — absolutely incredible. The pelmeni are handmade to perfection, and the prices are unbeatable. We keep coming back!"</p>
+                <div class="review-meta">
+                    <div class="reviewer-avatar">M</div>
+                    <div class="reviewer-info">
+                        <h4>Regular Customer</h4>
+                        <p>8 months ago · Google Reviews</p>
+                    </div>
+                </div>
+                <span class="review-rating-tag">Price per person: €1–10</span>
+            </div>
+            <div class="review-card fade-in visible">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Super — We tasted chebureks which were very large and delicious. The staff is warm and welcoming. A true taste of home!"</p>
+                <div class="review-meta">
+                    <div class="reviewer-avatar">S</div>
+                    <div class="reviewer-info">
+                        <h4>Satisfied Guest</h4>
+                        <p>4 weeks ago · Google Reviews</p>
+                    </div>
+                </div>
+                <span class="review-rating-tag">Food: 5 · Service: 5</span>
+            </div>
+        </div>
+        <div class="overall-rating fade-in visible">
+            <div class="big-number">4.9</div>
+            <div class="big-stars">★★★★★</div>
+            <p>Based on 105+ reviews</p>
+            <p class="reviews-count">"Great food, service and prices."</p>
+        </div>
+    </section>
+
+    <section class="visit" id="visit">
+        <div class="section-header fade-in visible">
+            <div class="section-label">Visit Us</div>
+            <h2 class="section-title">Come Say Privet</h2>
+        </div>
+        <div class="visit-grid">
+            <div class="visit-info fade-in visible">
+                <h3>We're Waiting For You</h3>
+                <div class="info-item">
+                    <div class="icon">📍</div>
+                    <div class="text">
+                        <h4>Address</h4>
+                        <p>Marktstraße 24<br>99867 Gotha, Germany</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="icon">🕐</div>
+                    <div class="text">
+                        <h4>Hours</h4>
+                        <p>Tue – Sat: 11:00 AM – 9:00 PM<br>Sun – Mon: Closed</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="icon">📞</div>
+                    <div class="text">
+                        <h4>Contact</h4>
+                        <p>+49 3621 2235454<br>info@pelmeni-haus.de</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="icon">💰</div>
+                    <div class="text">
+                        <h4>Price Range</h4>
+                        <p>€1 – 10 per person<br>Incredible value for authentic cuisine</p>
+                    </div>
+                </div>
+                <div class="visit-tags">
+                    <span class="visit-tag">🏳️&zwj;🌈 LGBTQ+ Friendly</span>
+                    <span class="visit-tag">🥟 Handmade Daily</span>
+                    <span class="visit-tag">💶 Budget Friendly</span>
+                    <span class="visit-tag">🏠 Family Owned</span>
+                </div>
+                <a href="tel:+4936212235454" class="btn btn-primary" style="margin-top: 25px; display: inline-block;">Call to Order</a>
+            </div>
+            <div class="map-container fade-in visible">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2550.5!2d10.70!3d50.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDU3JzAwLjAiTiAxMMKwNDInMDAuMCJF!5e0!3m2!1sen!2sde!4v1" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo" style="margin-bottom: 15px;">
+                    <div class="logo-icon">🥟</div>
+                    <div class="logo-text" style="color: var(--warm-white);">Pelmeni Haus</div>
+                </div>
+                <p>Authentic Russian and Eastern European dumplings, handmade daily with love and tradition. Every bite is a journey home.</p>
+                <p class="motto">"Made With Love"</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="#about">Our Story</a>
+                <a href="#menu">Menu</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#reviews">Reviews</a>
+            </div>
+            <div class="footer-col">
+                <h4>Menu</h4>
+                <a href="#menu">Pelmeni</a>
+                <a href="#menu">Vareniki</a>
+                <a href="#menu">Chebureks</a>
+                <a href="#menu">Soups</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="tel:+4936212235454">+49 3621 2235454</a>
+                <a href="#visit">Marktstraße 24, Gotha</a>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Pelmeni Haus · Marktstraße 24, 99867 Gotha, Germany · All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+
+</body></html>
